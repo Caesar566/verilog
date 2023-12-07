@@ -1,0 +1,39 @@
+$date
+	Thu Nov 16 13:39:21 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_test $end
+$var wire 8 ! data_o [7:0] $end
+$var parameter 32 " PERIOD $end
+$var reg 3 # data_i [2:0] $end
+$var reg 3 $ en_i [2:0] $end
+$scope module u_test $end
+$var wire 3 % data_i [2:0] $end
+$var wire 3 & en_i [2:0] $end
+$var reg 8 ' data_o [7:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b1010 "
+$end
+#0
+$dumpvars
+b11111111 '
+b1 &
+b10 %
+b1 $
+b10 #
+b11111111 !
+$end
+#1000
+b11111011 !
+b11111011 '
+b100 $
+b100 &

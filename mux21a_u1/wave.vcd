@@ -1,0 +1,53 @@
+$date
+	Thu Nov 16 14:02:10 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ns
+$end
+$scope module tb_first $end
+$var wire 1 ! out_firt $end
+$var wire 1 " out_end $end
+$var parameter 32 # PERIOD $end
+$var reg 1 $ a $end
+$var reg 1 % b $end
+$var reg 1 & c $end
+$var reg 1 ' sl1 $end
+$var reg 1 ( sl2 $end
+$scope module u_ab $end
+$var wire 1 $ a $end
+$var wire 1 % b $end
+$var wire 1 ' sl1 $end
+$var reg 1 ! out $end
+$upscope $end
+$scope module u_bc $end
+$var wire 1 ! a $end
+$var wire 1 & b $end
+$var wire 1 ( sl1 $end
+$var reg 1 " out $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b1010 #
+$end
+#0
+$dumpvars
+0(
+0'
+0&
+0%
+1$
+0"
+0!
+$end
+#10
+1!
+1'
+#20
+1"
+1(
+#30

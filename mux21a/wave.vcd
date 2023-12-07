@@ -1,0 +1,64 @@
+$date
+	Thu Nov  9 21:04:17 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ns
+$end
+$scope module tb_mux21a $end
+$var wire 1 ! out $end
+$var parameter 32 " PERIOD $end
+$var reg 1 # a $end
+$var reg 1 $ b $end
+$var reg 1 % clk $end
+$scope module u_mux21a $end
+$var wire 1 # a $end
+$var wire 1 $ b $end
+$var wire 1 % clk $end
+$var reg 1 ! out $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b1010 "
+$end
+#0
+$dumpvars
+0%
+0$
+1#
+1!
+$end
+#500
+0!
+1%
+#1000
+1!
+0%
+#1500
+0!
+1%
+#2000
+1!
+0%
+#2500
+0!
+1%
+#3000
+1!
+0%
+#3500
+0!
+1%
+#4000
+1!
+0%
+#4500
+0!
+1%
+#5000
+1!
+0%
