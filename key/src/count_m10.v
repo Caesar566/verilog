@@ -22,8 +22,8 @@ begin
     begin
         if(data==4'd9)
         begin
-            t<= 1'b1;    
-            data <= 4'd0;
+            t<= 1'b1;    //Counter to 9 to generate carry
+            data <= 4'd0;//Counter to 9 reset
         end
         else
         begin
