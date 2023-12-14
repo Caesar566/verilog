@@ -1,0 +1,50 @@
+$date
+	Thu Dec 14 19:03:13 2023
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1ps
+$end
+$scope module tb_full_add2 $end
+$var wire 1 ! sum $end
+$var wire 1 " cout $end
+$var parameter 32 # PERIOD $end
+$var reg 1 $ a $end
+$var reg 1 % b $end
+$var reg 1 & cin $end
+$scope module u_full_add2 $end
+$var wire 1 $ a $end
+$var wire 1 % b $end
+$var wire 1 & cin $end
+$var wire 1 " cout $end
+$var wire 1 ! sum $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+b1010 #
+$end
+#0
+$dumpvars
+1&
+1%
+1$
+1"
+1!
+$end
+#10000
+0"
+0!
+0&
+0%
+0$
+#20000
+1"
+1!
+1&
+1%
+1$
+#30000
