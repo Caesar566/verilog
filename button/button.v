@@ -1,7 +1,8 @@
 module button(
-    a, out
+    a, out, clk
 );
     input a;
+    input clk;
     output reg out;
     reg [15:0] timer;
 
@@ -9,14 +10,18 @@ module button(
         timer <= 15'b0;
     end
 
-    always @(!a) begin
-        if(timer == 16'b1_1111_1111 && a == 1'b0) begin
+    always @(posedge clk) begin
+        if(timer == 16'b1111_1111 && a == 1'b0) begin
             timer <= 16'b0;
             out <= 1'b1;
         end
-        else
+        else if(!a) begin
+            timer <= timer + 16'b1;            
+        end
+        else if(a) begin
             out <= 1'b0;
-            timer <= timer + 16'b1;
+        end
+
     end
 
 endmodule

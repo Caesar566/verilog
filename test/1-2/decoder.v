@@ -1,7 +1,7 @@
-module seg_decoder
+module decoder
 (
-	input[3:0]      bin_data,     // bin data input
-	output reg[6:0] seg_data      // seven segments LED output
+	input [3:0]      bin_data,     // bin data input
+	output reg [6:0] seg_data      // seven segments LED output
 );
 
 always@(*)
@@ -23,7 +23,7 @@ begin
 		4'hd:seg_data <= 7'b010_0001;
 		4'he:seg_data <= 7'b000_0110;
 		4'hf:seg_data <= 7'b000_1110;
-		default:seg_data <= 7'b111_1111;
+		default:seg_data <= 8'b0111_1111;
 	endcase
 end
 endmodule
