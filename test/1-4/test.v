@@ -1,11 +1,45 @@
 module test (
     input      clk,
     input      rst_n,
+    input key1,
+    input key2,
+    input key3,
     output[5:0]seg_sel,
     output[7:0]seg_data
 );
 
+wire out_key1;
+wire out_key2;
+wire out_key3;
 
+button  u_button_1 (
+    .a                       ( key1     ),
+    .clk                     ( clk   ),
+
+    .out                     ( out_key1   )
+);
+
+button  u_button_2 (
+    .a                       ( key2     ),
+    .clk                     ( clk   ),
+
+    .out                     ( out_key2   )
+);
+
+button  u_button_3 (
+    .a                       ( key3     ),
+    .clk                     ( clk   ),
+
+    .out                     ( out_key3    )  //按键消抖及按键信号提取
+);
+
+wire key1_level;
+
+l2h  u_l2h (
+    .a                       ( out_key1       ),
+
+    .level                   ( key1_level   )
+);
 
 wire en_1hz;
 
@@ -15,9 +49,11 @@ delay  u_delay (
 
     .en_1hz                  ( en_1hz   )
 );
+
 wire cout_s;
 wire cout_m;
 wire cout_h;
+
 
 wire [3:0] nums_0_s;
 wire [2:0] nums_1_s;
@@ -31,11 +67,32 @@ timer  s_timer (
     .cout                    ( cout_s   )
 );
 
+wire out_h;
+wire out_m;
+
+mux21a  mux21a_h (
+    .a                       ( cout_m      ),
+    .b                       ( out_key2     ),
+    .sl                      ( key1_level    ),
+
+    .out                     ( out_h   )
+);
+
+
+
+mux21a  mux21a_m (
+    .a                       ( cout_s     ),
+    .b                       ( out_key3     ),
+    .sl                      ( key1_level    ),
+
+    .out                     ( out_m   )        //2c1 信号，选择按键与时钟模式
+);
+
 wire [3:0] nums_0_m;
 wire [2:0] nums_1_m;
 
 timer  m_timer (
-    .clk                     ( cout_s         ),
+    .clk                     ( out_m         ),
     .rstn                    ( rstn        ),
 
     .nums_0                  ( nums_0_m  ),
@@ -47,7 +104,7 @@ wire [3:0] nums_0_h;
 wire [2:0] nums_1_h;
 
 h_timer  h_timer (
-    .clk                     ( cout_m         ),
+    .clk                     ( cout_h         ),
     .rstn                    ( rstn          ),
 
     .nums_0                  ( nums_0_h  ),

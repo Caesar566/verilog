@@ -11,7 +11,7 @@ module button(
     end
 
     always @(posedge clk) begin
-        if(timer == 32'd20 && a == 1'b0) begin
+        if(timer == 32'd100000 && a == 1'b0) begin
             timer <= 32'b0;
             out <= 1'b1;
         end
@@ -19,7 +19,7 @@ module button(
             timer <= timer + 32'b1;            
         end
         else if(a) begin
-            if (timer == 32'd20) begin
+            if (timer == 32'd100000) begin
                 timer <= 0;
                 out <= 32'b0;
             end
