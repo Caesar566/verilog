@@ -4,8 +4,10 @@ module test (
     input key1,
     input key2,
     input key3,
-    output[5:0]seg_sel,
-    output[7:0]seg_data
+    output [5:0] seg_sel,
+    output [7:0] seg_data,
+    output [3:0] led_data,
+    output pwm 
 );
 
 wire out_key1;
@@ -42,6 +44,7 @@ l2h  u_l2h (
 );
 
 wire en_1hz;
+
 
 delay  u_delay (
     .clk                     ( clk      ),
@@ -112,6 +115,36 @@ h_timer  h_timer (
     .cout                    ( cout_h    )
 );
 
+wire out_led;
+
+time_true  u_time_true (
+    .nums_0_m                ( nums_0_m   ),
+    .nums_1_m                ( nums_1_m   ),
+    .nums_0_s                ( nums_0_s   ),
+    .nums_1_s                ( nums_1_s   ),
+
+    .true                    ( true            )
+);
+
+mux21a  mux21a_led (
+    .a                       ( clk     ),
+    .b                       (  0 ),
+    .sl                      (  true   ),
+    .out                     ( out_led   )        //2c1 信号，选择按键与时钟模式
+);
+
+pwm_l  u_pwm_l (
+    .clk                     ( out_led    ),
+    .rstn                    ( rstn   ),
+
+    .out                     ( pwm    )
+);
+
+led  u_led (
+    .clk                     ( out_led             ),
+    .rstn                    ( rstn            ),
+    .led_data                ( led_data  )
+);
 
 wire [7:0] seg_data_0;
 wire [7:0] seg_data_1;
